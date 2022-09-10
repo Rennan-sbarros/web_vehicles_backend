@@ -3,10 +3,10 @@ const mongoose = require('mongoose')
 const Vehicle = mongoose.model('Vehicle', {
     placa: String,
     chassi: String,
-    renavam: Number,
+    renavam: String,
     modelo: String,
     marca: String,
-    ano: Number
+    ano: String
 })
 
 module.exports = Vehicle
