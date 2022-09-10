@@ -1,8 +1,9 @@
-
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+
+const Vehicle = require('./models/Vehicle')
 
 app.use(
     express.urlencoded({
@@ -12,10 +13,12 @@ app.use(
   
 app.use(express.json())
 
+// Rota inicial / endpoint
 app.get('/', (req, res) => {
     res.json({ message: 'Você acessou a API com sucesso' })
 })
 
+// Configuração banco de dados
 const DB_USER = process.env.DB_USER
 const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD)
 
