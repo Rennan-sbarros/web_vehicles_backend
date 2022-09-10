@@ -59,4 +59,40 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+// Update
+router.patch('/:id', async (req, res) => {
+    const id = req.params.id
+  
+    const { 
+        placa,
+        chassi,
+        renavam,
+        modelo,
+        marca,
+        ano, 
+    } = req.body
+
+    const vehicle = {
+        placa,
+        chassi,
+        renavam,
+        modelo,
+        marca,
+        ano,
+    }
+  
+    try {
+      const updatedVehicle = await Vehicle.updateOne({ _id: id }, vehicle)
+  
+      if (updatedVehicle.matchedCount === 0) {
+        res.status(422).json({ message: 'Veículo não encontrado!' })
+        return
+      }
+  
+      res.status(200).json(vehicle)
+    } catch (error) {
+      res.status(500).json({ erro: error })
+    }
+})
+
 module.exports = router
