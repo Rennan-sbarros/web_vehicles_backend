@@ -94,5 +94,25 @@ router.patch('/:id', async (req, res) => {
       res.status(500).json({ erro: error })
     }
 })
+  
+// Delete
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id
+  
+    const vehicle = await Vehicle.findOne({ _id: id })
+  
+    if (!vehicle) {
+      res.status(422).json({ message: 'Veículo não encontrado!' })
+      return
+    }
+  
+    try {
+      await Vehicle.deleteOne({ _id: id })
+  
+      res.status(200).json({ message: 'Veículo removido com sucesso!' })
+    } catch (error) {
+      res.status(500).json({ erro: error })
+    }
+})
 
 module.exports = router
