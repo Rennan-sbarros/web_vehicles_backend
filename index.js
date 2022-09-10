@@ -3,8 +3,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 
-const Vehicle = require('./models/Vehicle')
-
 app.use(
     express.urlencoded({
       extended: true,
@@ -12,6 +10,11 @@ app.use(
   )
   
 app.use(express.json())
+
+// rotas da API
+const vehicleRoutes = require('./routes/vehicleRoutes')
+
+app.use('/vehicles', vehicleRoutes)
 
 // Rota inicial / endpoint
 app.get('/', (req, res) => {
