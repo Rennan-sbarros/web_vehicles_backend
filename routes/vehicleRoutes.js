@@ -30,4 +30,16 @@ router.post('/', async (req, res) => {
     }
 })
 
+// Read
+
+router.get('/', async (req, res) => {
+    try {
+      const vehicle = await Vehicle.find()
+  
+      res.status(200).json(vehicle)
+    } catch (error) {
+      res.status(500).json({ erro: error })
+    }
+  })
+
 module.exports = router
