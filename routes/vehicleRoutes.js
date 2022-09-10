@@ -31,7 +31,6 @@ router.post('/', async (req, res) => {
 })
 
 // Read
-
 router.get('/', async (req, res) => {
     try {
       const vehicle = await Vehicle.find()
@@ -40,6 +39,24 @@ router.get('/', async (req, res) => {
     } catch (error) {
       res.status(500).json({ erro: error })
     }
-  })
+})
+
+// Read by id
+router.get('/:id', async (req, res) => {
+    const id = req.params.id
+  
+    try {
+      const vehicle = await Vehicle.findOne({ _id: id })
+  
+      if (!vehicle) {
+        res.status(422).json({ message: 'Veículo não encontrado!' })
+        return
+      }
+  
+      res.status(200).json(vehicle)
+    } catch (error) {
+      res.status(500).json({ erro: error })
+    }
+})
 
 module.exports = router
