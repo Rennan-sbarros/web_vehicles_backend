@@ -1,8 +1,19 @@
 const router = require('express').Router()
+const { body, validationResult } = require('express-validator');
 const Vehicle = require('../models/Vehicle')
 
+
 // Create
-router.post('/', async (req, res) => {
+router.post('/', [
+    body('placa').notEmpty().withMessage("O campo placa é obrigatório"),
+    body('chassi').notEmpty().withMessage("O campo chassi é obrigatório"),
+    body('renavam').notEmpty().withMessage("O campo renavam é obrigatório"),
+    body('modelo').notEmpty().withMessage("O campo modelo é obrigatório"),
+    body('marca').notEmpty().withMessage("O campo marca é obrigatório"),
+    body('ano').notEmpty().withMessage("O campo ano é obrigatório"),
+    body('ano').isNumeric().withMessage("O ano do veículo precisa ser numeral"), 
+  ],
+  async (req, res) => {
     const { 
         placa,
         chassi,
@@ -20,6 +31,11 @@ router.post('/', async (req, res) => {
         marca,
         ano,
     }
+    
+    const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
 
     try {
         await Vehicle.create(vehicle)
@@ -28,8 +44,9 @@ router.post('/', async (req, res) => {
     } catch (error) {
         res.status(500).json({ erro: error })
     }
-})
+  })
 
+  
 // Read
 router.get('/', async (req, res) => {
     try {
