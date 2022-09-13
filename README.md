@@ -18,7 +18,7 @@
     DB_USER=rennan
     DB_PASSWORD=V7BJ11JxbH6zSHwP
 - Em seguida, no CMD inicie a aplicação com o comando: npm start
-- Pronto! Agora vamos usar o Postman para testar as rotas e cadastrar alguns veículos para que seja possível visualizar a listagem no front, e pra facilitar sua vida deixei aqui o link para fazer o download da "collection" que criei no postman com todas as requisições: <a href="https://github.com/Rennan-sbarros/rennan-sbarros/blob/main/Diversos/Web_Vehicles%20-%20API%20Node.js%20%2B%20Mongoose%20Copy.postman_collection.rar"></a>
+- Pronto! Agora vamos usar o Postman para testar as rotas e cadastrar alguns veículos para que seja possível visualizar a listagem no front, e pra facilitar sua vida deixei aqui o link para fazer o download da "collection" que criei no postman com todas as requisições: <a href="https://github.com/Rennan-sbarros/rennan-sbarros/blob/main/Diversos/Web_Vehicles%20-%20API%20Node.js%20%2B%20Mongoose%20Copy.postman_collection.rar">Collection Postman API</a>
 - No Postman, após copiar a "collection", clique em "Create vehicle" e depois em "Body" onde aparecerá os atributos do veículo. Agora basta clicar em Send e criar quantos veículos quiser.
 
 - Exemplo do Postman:
